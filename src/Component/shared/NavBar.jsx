@@ -6,7 +6,7 @@ import { AiOutlineMenuUnfold } from 'react-icons/ai';
 
 // Create a React component with state variables for scroll-based color changes
 const NavBar = () => {
-  const [navbarColor, setNavbarColor] = useState('bg-transparent');
+  const [navbarColor, setNavbarColor] = useState('bg-slate-100');
   const [navbarTextColor, setNavbarTextColor] = useState('text-black');
   const [navbarShadow, setNavbarShadow] = useState('');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -20,7 +20,7 @@ const NavBar = () => {
         setNavbarTextColor('text-white');
         setNavbarShadow('shadow');
       } else {
-        setNavbarColor('bg-transparent');
+        setNavbarColor('bg-slate-100');
         setNavbarTextColor('text-black');
         setNavbarShadow('');
       }
@@ -53,7 +53,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <div className={` navbar fixed ${navbarColor} bg-opacity-75 px-1 md:px-10 z-20 transition-colors duration-300 ${navbarShadow}`}>
+      <div className={` navbar fixed ${navbarColor}  bg-opacity-75 px-1 md:px-10 z-20 transition-colors duration-300 ${navbarShadow}`}>
         <div className={`navbar-start ${navbarTextColor}`}>
           {/* Drawer for mobile view */}
           <button onClick={toggleDrawer} className="btn btn-ghost lg:hidden">
