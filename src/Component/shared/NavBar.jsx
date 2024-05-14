@@ -1,10 +1,7 @@
 import  { useState, useEffect, useRef } from 'react';
-// import './nav.css'; // Import your CSS file
-import {  Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
 
-// Create a React component with state variables for scroll-based color changes
 const NavBar = () => {
   const [navbarColor, setNavbarColor] = useState('bg-slate-100');
   const [navbarTextColor, setNavbarTextColor] = useState('text-black');
@@ -70,11 +67,11 @@ const NavBar = () => {
           <div className=' flex gap-2'>
             <div className='flex justify-center items-center'>
               <div className='h-10 w-10 md:h-14 bg-white rounded-full md:w-14 '>
-                <img src="https://i.ibb.co/kyg59Y0/pngegg.png" alt="" />
+                <img src="https://i.ibb.co/xMbQDNh/Green-University-of-Bangladesh-logo-svg.png" alt="" />
               </div>
             </div>
             <div className='space-y-0 pt-0 md:pt-1 w-60'>
-              <h3 className={`font-semibold ${navbarTextColor}`}>HealthCare</h3>
+              <h3 className={`font-semibold ${navbarTextColor}`}>Green University Of Bangladesh</h3>
               <p className='leading-none w-full'>Private Limited</p>
             </div>
           </div>
