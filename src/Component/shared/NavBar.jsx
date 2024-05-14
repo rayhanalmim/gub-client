@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
-import { useLocation } from 'react-router-dom'; // Import useLocation from react-router-dom
+import { Link, useLocation } from 'react-router-dom'; // Import useLocation from react-router-dom
 
 const NavBar = () => {
   const [navbarColor, setNavbarColor] = useState('bg-slate-100');
@@ -44,7 +44,7 @@ const NavBar = () => {
   };
 
   return (
-    <div>
+    <div className='flex justify-between'>
       <div className={` navbar fixed py-5 ${navbarColor}  bg-opacity-75 px-1 md:px-10 z-20 transition-colors duration-300 ${navbarShadow}`}>
         <div className={`navbar-start ${navbarTextColor}`}>
           {/* Drawer for mobile view */}
@@ -98,10 +98,34 @@ const NavBar = () => {
               }
 
             </div>
+
           </div>
         </div>
-        <div className="navbar-center hidden lg:flex"></div>
+        <div className="">
+        <div className="hidden md:block">
+          {/* {
+                        user && <a className="btn btn-ghost normal-case text-xl">{user.displayName}</a>
+                    } */}
+
+          <a className="btn btn-ghost normal-case text-xl">Rayhan Al Mim</a>
+
+        </div>
+        <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-2">
+          <div className="w-10 rounded-full">
+            <img src="https://i.ibb.co/v1FKW31/user.png" alt="" />
+            {/* {
+                    user ? <img src={user.photoURL} alt="" /> : <img src="https://i.ibb.co/v1FKW31/user.png" alt="" />
+                  } */}
+          </div>
+        </label>
+        {/* {
+                user ? <Link onClick={handleLogOut} className={`btn w-28 btn-outline btn-sm ${isDarkMode ? 'text-white' : ''}`}>Logout</Link> : <Link to='/login' className={`btn w-28 btn-outline btn-sm ${isDarkMode ? 'text-white' : ''}`}>Login</Link>
+              } */}
+        <Link to='/login' className={`btn w-28 btn-outline btn-sm }`}>Login</Link>
       </div>
+      </div>
+
+    
     </div>
   );
 };
