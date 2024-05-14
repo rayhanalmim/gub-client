@@ -1,0 +1,19 @@
+/* styles.css */
+
+/* Active link style */
+.active {
+    background-color: #4a90e2; /* Change background color for active link */
+    color: #000; /* Change text color for active link */
+}
+
+/* Button styles (adjust as needed) */
+.btn {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #4a90e2; /* Change button background color on hover */
+}
