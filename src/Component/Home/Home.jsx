@@ -31,21 +31,21 @@ const Home = () => {
                                 </button>
                             </NavLink>
 
-                            <NavLink to="/" activeClassName="active">
+                            <NavLink to="/launch" activeClassName="active">
                                 <button className="btn bg-sky-800 hover:text-black hover:bg-sky-600 text-white w-full">
                                     <MdOutlineNotStarted className="mr-2 text-2xl" />
                                     Launch Course
                                 </button>
                             </NavLink>
 
-                            <NavLink to="/student" activeClassName="active">
+                            <NavLink to="/coursedetails" activeClassName="active">
                                 <button className="btn bg-sky-800 hover:text-black hover:bg-sky-600 text-white w-full">
                                     <FaBookReader className="mr-2 text-xl" />
                                     Existing Course
                                 </button>
                             </NavLink>
 
-                            <NavLink to="/sellView" activeClassName="active">
+                            <NavLink to="/attendance" activeClassName="active">
                                 <button className="btn bg-sky-800 hover:text-black hover:bg-sky-600 text-white w-full">
                                     <AiOutlineEdit className="mr-2 text-xl" />
                                     Attendance Portal
@@ -58,7 +58,7 @@ const Home = () => {
                 <div >
                     <NavBar></NavBar>
                 </div>
-                <div className="w-full lg:w-3/4 pt-5 lg:pt-[200px] sticky top-10">
+                <div className="w-full lg:w-3/4 pt-5 lg:pt-[220px] sticky top-10">
                     <div className="w-full justify-around lg:p-8 gap-9 text-center lg:-mt-32 bg-slate-100">
                         <Outlet />
                     </div>

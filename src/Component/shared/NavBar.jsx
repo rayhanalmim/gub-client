@@ -1,6 +1,7 @@
-import  { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
+import { useLocation } from 'react-router-dom'; // Import useLocation from react-router-dom
 
 const NavBar = () => {
   const [navbarColor, setNavbarColor] = useState('bg-slate-100');
@@ -8,7 +9,7 @@ const NavBar = () => {
   const [navbarShadow, setNavbarShadow] = useState('');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const drawerRef = useRef(null);
-
+  const location = useLocation(); // Get the current location using useLocation
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,10 +28,6 @@ const NavBar = () => {
       if (drawerRef.current && !drawerRef.current.contains(event.target)) {
         setIsDrawerOpen(false);
       }
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -46,11 +43,9 @@ const NavBar = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
- 
-
   return (
     <div>
-      <div className={` navbar fixed ${navbarColor}  bg-opacity-75 px-1 md:px-10 z-20 transition-colors duration-300 ${navbarShadow}`}>
+      <div className={` navbar fixed py-5 ${navbarColor}  bg-opacity-75 px-1 md:px-10 z-20 transition-colors duration-300 ${navbarShadow}`}>
         <div className={`navbar-start ${navbarTextColor}`}>
           {/* Drawer for mobile view */}
           <button onClick={toggleDrawer} className="btn btn-ghost lg:hidden">
@@ -64,23 +59,51 @@ const NavBar = () => {
               <FaTimes className={`h-6 w-6 ${navbarTextColor}`} />
             </button>
           </div>
-          <div className=' flex gap-2'>
-            <div className='flex justify-center items-center'>
-              <div className='h-10 w-10 md:h-14 bg-white rounded-full md:w-14 '>
-                <img src="https://i.ibb.co/xMbQDNh/Green-University-of-Bangladesh-logo-svg.png" alt="" />
-              </div>
+          <div className=''>
+            <div className=''>
+              {
+                location.pathname === '/' && <h3>Pages / Home </h3>
+              }
+              {
+                location.pathname === '/launch' && <h3>Pages / launch Course </h3>
+              }
+              {
+                location.pathname === '/coursedetails' && <h3>Pages / Course Details </h3>
+              }
+              {
+                location.pathname === '/attendance' && <h3>Pages / Attendance Portal </h3>
+              }
             </div>
-            <div className='space-y-0 pt-0 md:pt-1 w-60'>
-              <h3 className={`font-semibold ${navbarTextColor}`}>Green University Of Bangladesh</h3>
-              <p className='leading-none w-full'>Private Limited</p>
+
+            <div>
+              {
+                location.pathname === '/' && <h3 className='text-2xl tracking-wide text-black font-bold'>
+                  Faculty Home
+                </h3>
+              }
+              {
+                location.pathname === '/coursedetails' && <h3 className='text-2xl tracking-wide text-black font-bold'>
+                  Course Details
+                </h3>
+              }
+              {
+                location.pathname === '/launch' && <h3 className='text-2xl tracking-wide text-black font-bold'>
+                  launch Course
+                </h3>
+              }
+              {
+                location.pathname === '/attendance' && <h3 className='text-2xl tracking-wide text-black font-bold'>
+                  Attendance Portal
+                </h3>
+              }
+
             </div>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex"></div>
-      
       </div>
     </div>
   );
 };
 
-export default NavBar; 
+export default NavBar;
