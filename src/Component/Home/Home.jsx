@@ -4,14 +4,14 @@ import { FaShop } from "react-icons/fa6";
 
 const Home = () => {
     return (
-        <div className="bg-sky-900 min-h-screen">
+        <div className=" min-h-screen">
             <div className="flex flex-col lg:flex-row w-full  mx-auto  relative">
                 <div className="w-full lg:w-1/4  hidden lg:block">
-                    <div className="justify-around  top-6 sticky p-6 lg:p-8 gap-9 text-center  bg-sky-800 w-full mx-auto ">
+                    <div className="justify-around  top-6 sticky p-6 lg:p-8 gap-9 text-center   w-full mx-auto ">
                         <div className="flex flex-col gap-4">
 
                             <div className="flex justify-center py-5 items-center border-b-2 border-black">
-                                <h3 className="text-3xl text-white"><span className="font-bold">Teacher</span> <br /> Dashboard</h3>
+                                <h3 className="text-3xl "><span className="font-bold">Teacher</span> <br /> Dashboard</h3>
                             </div>
 
                             <Link to="/">
@@ -68,7 +68,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="w-full lg:w-3/4 pt-5 lg:pt-32 sticky top-10">
-                    <div className="w-full justify-around lg:p-8 gap-9 text-center lg:-mt-32 bg-sky-800 ">
+                    <div className="w-full justify-around lg:p-8 gap-9 text-center lg:-mt-32 bg-slate-100 ">
                         <div className="pb-10">
                             <h3>navbar comming</h3>
                         </div>
