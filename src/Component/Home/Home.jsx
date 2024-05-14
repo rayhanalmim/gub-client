@@ -1,15 +1,18 @@
-import Table from "../OtherComponent/Table";
-import {  Link, Outlet,} from "react-router-dom";
-import { FaChartBar, FaBeer, FaUser, FaShoppingCart, FaListUl} from "react-icons/fa";
+import { Link, Outlet, } from "react-router-dom";
+import { FaChartBar, FaBeer, FaUser, FaShoppingCart, FaListUl } from "react-icons/fa";
 import { FaShop } from "react-icons/fa6";
 
 const Home = () => {
     return (
         <div className="bg-sky-900 min-h-screen">
-            <div className="flex flex-col lg:flex-row w-full  mx-auto gap-5 relative">
-                <div className="w-full lg:w-1/3 p-4 hidden lg:block">
-                    <div className="justify-around  top-6 sticky p-6 lg:p-8 gap-9 text-center rounded-lg my-8 bg-sky-800 w-full mx-auto ">
+            <div className="flex flex-col lg:flex-row w-full  mx-auto  relative">
+                <div className="w-full lg:w-1/4  hidden lg:block">
+                    <div className="justify-around  top-6 sticky p-6 lg:p-8 gap-9 text-center  bg-sky-800 w-full mx-auto ">
                         <div className="flex flex-col gap-4">
+
+                            <div className="flex justify-center py-5 items-center border-b-2 border-black">
+                                <h3 className="text-3xl text-white"><span className="font-bold">Teacher</span> <br /> Dashboard</h3>
+                            </div>
 
                             <Link to="/">
                                 <button className="btn bg-sky-800  hover:text-black text-white w-full ">
@@ -18,10 +21,10 @@ const Home = () => {
                                 </button>
                             </Link>
 
-                            <Link to="/dsr">
+                            <Link to="/student">
                                 <button className="btn bg-sky-800  hover:text-black text-white w-full ">
                                     <FaShoppingCart className="mr-2" />
-                                    DSR Order Request 
+                                    DSR Order Request
                                 </button>
                             </Link>
 
@@ -64,8 +67,11 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-full lg:w-2/3 p-4 pt-5 lg:pt-44 sticky top-0">
-                    <div className="w-full justify-around lg:p-8 gap-9 text-center rounded-lg lg:-mt-32 bg-sky-800 ">
+                <div className="w-full lg:w-3/4 pt-5 lg:pt-32 sticky top-10">
+                    <div className="w-full justify-around lg:p-8 gap-9 text-center lg:-mt-32 bg-sky-800 ">
+                        <div className="pb-10">
+                            <h3>navbar comming</h3>
+                        </div>
                         <Outlet />
                     </div>
                 </div>
