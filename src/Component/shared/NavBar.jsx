@@ -4,8 +4,8 @@ import { AiOutlineMenuUnfold } from 'react-icons/ai';
 import { Link, useLocation } from 'react-router-dom'; // Import useLocation from react-router-dom
 
 const NavBar = () => {
-  const [navbarColor, setNavbarColor] = useState('bg-slate-100');
-  const [navbarTextColor, setNavbarTextColor] = useState('text-black');
+  const [navbarColor, setNavbarColor] = useState('bg-green-800');
+  const [navbarTextColor, setNavbarTextColor] = useState('');
   const [navbarShadow, setNavbarShadow] = useState('');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const drawerRef = useRef(null);
@@ -14,12 +14,12 @@ const NavBar = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        setNavbarColor('bg-sky-800');
-        setNavbarTextColor('text-white');
+        setNavbarColor('bg-slate-100');
+        setNavbarTextColor(' text-black');
         setNavbarShadow('shadow');
       } else {
-        setNavbarColor('bg-slate-100');
-        setNavbarTextColor('text-black');
+        setNavbarColor(' bg-green-800  ');
+        setNavbarTextColor('text-white');
         setNavbarShadow('');
       }
     };
@@ -77,22 +77,22 @@ const NavBar = () => {
 
             <div>
               {
-                location.pathname === '/' && <h3 className='text-2xl tracking-wide text-black font-bold'>
+                location.pathname === '/' && <h3 className='text-2xl tracking-wide  font-bold'>
                   Faculty Home
                 </h3>
               }
               {
-                location.pathname === '/coursedetails' && <h3 className='text-2xl tracking-wide text-black font-bold'>
+                location.pathname === '/coursedetails' && <h3 className='text-2xl tracking-wide font-bold'>
                   Course Details
                 </h3>
               }
               {
-                location.pathname === '/launch' && <h3 className='text-2xl tracking-wide text-black font-bold'>
+                location.pathname === '/launch' && <h3 className='text-2xl tracking-wide  font-bold'>
                   launch Course
                 </h3>
               }
               {
-                location.pathname === '/attendance' && <h3 className='text-2xl tracking-wide text-black font-bold'>
+                location.pathname === '/attendance' && <h3 className='text-2xl tracking-wide  font-bold'>
                   Attendance Portal
                 </h3>
               }
@@ -101,31 +101,31 @@ const NavBar = () => {
 
           </div>
         </div>
-        <div className="">
-        <div className="hidden md:block">
-          {/* {
+        {/* <div className="">
+          <div className="hidden md:block">
+            {
                         user && <a className="btn btn-ghost normal-case text-xl">{user.displayName}</a>
-                    } */}
+                    }
 
-          <a className="btn btn-ghost normal-case text-xl">Rayhan Al Mim</a>
+            <a className="btn btn-ghost normal-case text-xl">Rayhan Al Mim</a>
 
-        </div>
-        <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-2">
-          <div className="w-10 rounded-full">
-            <img src="https://i.ibb.co/v1FKW31/user.png" alt="" />
-            {/* {
-                    user ? <img src={user.photoURL} alt="" /> : <img src="https://i.ibb.co/v1FKW31/user.png" alt="" />
-                  } */}
           </div>
-        </label>
-        {/* {
+          <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-2">
+            <div className="w-10 rounded-full">
+              <img src="https://i.ibb.co/v1FKW31/user.png" alt="" />
+              {
+                    user ? <img src={user.photoURL} alt="" /> : <img src="https://i.ibb.co/v1FKW31/user.png" alt="" />
+                  }
+            </div>
+          </label>
+          {
                 user ? <Link onClick={handleLogOut} className={`btn w-28 btn-outline btn-sm ${isDarkMode ? 'text-white' : ''}`}>Logout</Link> : <Link to='/login' className={`btn w-28 btn-outline btn-sm ${isDarkMode ? 'text-white' : ''}`}>Login</Link>
-              } */}
-        <Link to='/login' className={`btn w-28 btn-outline btn-sm }`}>Login</Link>
-      </div>
+              }
+          <Link to='/login' className={`btn w-28 btn-outline btn-sm }`}>Login</Link>
+        </div> */}
       </div>
 
-    
+
     </div>
   );
 };
