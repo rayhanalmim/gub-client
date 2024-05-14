@@ -18,49 +18,21 @@ const Home = () => {
                             <NavLink to="/" activeClassName="active">
                                 <button className="btn bg-sky-800 hover:text-black text-white w-full">
                                     <FaShoppingCart className="mr-2" />
-                                    Home
+                                    Launch Course
                                 </button>
                             </NavLink>
 
                             <NavLink to="/student" activeClassName="active">
                                 <button className="btn bg-sky-800 hover:text-black text-white w-full">
                                     <FaShoppingCart className="mr-2" />
-                                    DSR Order Request
+                                    Existing Course
                                 </button>
                             </NavLink>
 
                             <NavLink to="/sellView" activeClassName="active">
                                 <button className="btn bg-sky-800 text-white w-full">
                                     <FaListUl className="mr-2" />
-                                    Billing Management
-                                </button>
-                            </NavLink>
-
-                            <NavLink to="/manageProduct" activeClassName="active">
-                                <button className="btn bg-sky-800 hover:text-black text-white w-full">
-                                    <FaBeer className="mr-2" />
-                                    Product Management
-                                </button>
-                            </NavLink>
-
-                            <NavLink to="/shop" activeClassName="active">
-                                <button className="btn bg-sky-800 hover:text-black text-white w-full">
-                                    <FaShop className="mr-2" />
-                                    Client Shop Management
-                                </button>
-                            </NavLink>
-
-                            <NavLink to="/user" activeClassName="active">
-                                <button className="btn bg-sky-800 hover:text-black text-white w-full">
-                                    <FaUser className="mr-2" />
-                                    Employee Management
-                                </button>
-                            </NavLink>
-
-                            <NavLink to="/analysis" activeClassName="active">
-                                <button className="btn bg-sky-800 hover:text-black text-white w-full">
-                                    <FaChartBar className="mr-2" />
-                                    Sell Analysis
+                                    Attendance Portal
                                 </button>
                             </NavLink>
 
