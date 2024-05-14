@@ -1,5 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { FaChartBar, FaBeer, FaUser, FaShoppingCart, FaListUl } from "react-icons/fa";
+import { FaBookReader } from "react-icons/fa";
+import { MdOutlineNotStarted } from "react-icons/md";
+import { AiOutlineEdit } from "react-icons/ai";
 import { FaShop } from "react-icons/fa6";
 import NavBar from "../shared/NavBar";
 
@@ -16,22 +19,22 @@ const Home = () => {
                             </div>
 
                             <NavLink to="/" activeClassName="active">
-                                <button className="btn bg-sky-800 hover:text-black text-white w-full">
-                                    <FaShoppingCart className="mr-2" />
+                                <button className="btn bg-sky-800 hover:text-black hover:bg-sky-600 text-white w-full">
+                                    <MdOutlineNotStarted className="mr-2 text-2xl" />
                                     Launch Course
                                 </button>
                             </NavLink>
 
                             <NavLink to="/student" activeClassName="active">
-                                <button className="btn bg-sky-800 hover:text-black text-white w-full">
-                                    <FaShoppingCart className="mr-2" />
+                                <button className="btn bg-sky-800 hover:text-black hover:bg-sky-600 text-white w-full">
+                                    <FaBookReader className="mr-2 text-xl" />
                                     Existing Course
                                 </button>
                             </NavLink>
 
                             <NavLink to="/sellView" activeClassName="active">
-                                <button className="btn bg-sky-800 text-white w-full">
-                                    <FaListUl className="mr-2" />
+                                <button className="btn bg-sky-800 hover:text-black hover:bg-sky-600 text-white w-full">
+                                    <AiOutlineEdit className="mr-2 text-xl" />
                                     Attendance Portal
                                 </button>
                             </NavLink>
