@@ -1,10 +1,33 @@
-import useStudents from "../../Hook/useStudents";
-
-
+import { useState, useEffect } from 'react';
+import useStudents from '../../Hook/useStudents';
 
 const Table = () => {
-
     const { students, isLoading, refetch } = useStudents();
+    const [selectAll, setSelectAll] = useState(false);
+    const [selectedItems, setSelectedItems] = useState([]);
+
+    // Update selectAll state based on selectedItems array
+    useEffect(() => {
+        setSelectAll(selectedItems.length === students.length);
+    }, [selectedItems, students]);
+
+    // Function to handle the click event of the checkbox in the header
+    const handleSelectAll = () => {
+        if (!selectAll) {
+            setSelectedItems(students.map(student => student._id));
+        } else {
+            setSelectedItems([]);
+        }
+    };
+
+    // Function to handle the click event of a checkbox in the table body
+    const handleCheckboxChange = (studentId) => {
+        if (selectedItems.includes(studentId)) {
+            setSelectedItems(selectedItems.filter(item => item !== studentId));
+        } else {
+            setSelectedItems([...selectedItems, studentId]);
+        }
+    };
 
     return (
         <div className="">
@@ -35,7 +58,7 @@ const Table = () => {
                             <tr>
                                 <th scope="col" className="p-4">
                                     <div className="flex items-center">
-                                        <input id="checkbox-all-search" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                        <input id="checkbox-all-search" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" onChange={handleSelectAll} checked={selectAll} />
                                         <label htmlFor="checkbox-all-search" className="sr-only">checkbox</label>
                                     </div>
                                 </th>
@@ -54,13 +77,12 @@ const Table = () => {
                             </tr>
                         </thead>
                         <tbody>
-
-                            {
-                                students?.map((student, idx) => <tr key={idx} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            {students?.map((student, idx) => (
+                                <tr key={idx} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                     <td className="w-4 p-4">
                                         <div className="flex items-center">
-                                            <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                                            <label htmlFor="checkbox-table-search-1" className="sr-only">checkbox</label>
+                                            <input id={`checkbox-table-search-${idx}`} type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" checked={selectedItems.includes(student._id)} onChange={() => handleCheckboxChange(student._id)} />
+                                            <label htmlFor={`checkbox-table-search-${idx}`} className="sr-only">checkbox</label>
                                         </div>
                                     </td>
                                     <th scope="row" className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
@@ -70,9 +92,7 @@ const Table = () => {
                                             <div className="font-normal text-gray-500">neil.sims@flowbite.com</div>
                                         </div>
                                     </th>
-                                    <td className="px-6 py-4">
-                                        {student?.studentId}
-                                    </td>
+                                    <td className="px-6 py-4">{student?.studentId}</td>
                                     <td className="px-6 py-4">
                                         <div className="flex items-center">
                                             <div className="h-2.5 w-2.5 rounded-full bg-green-500 me-2"></div> Online
@@ -81,18 +101,15 @@ const Table = () => {
                                     <td className="px-6 py-4">
                                         <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit user</a>
                                     </td>
-                                </tr>)
-                            }
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
-
-
                 <div className="flex justify-end py-5 pr-5">
                     <button type="button" className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Next</button>
                 </div>
             </div>
-
         </div>
     );
 };
