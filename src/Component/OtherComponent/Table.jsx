@@ -1,36 +1,18 @@
 
-
 const Table = () => {
     return (
         <div className="">
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg bg-slate-100">
                 <div className="flex items-center p-6 justify-between flex-column  flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 dark:bg-gray-900">
-                    <div>
-                        <button id="dropdownActionButton" data-dropdown-toggle="dropdownAction" className="inline-flex items-center text-gray-500 bg-transparent border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
-                            <span className="sr-only">Action button</span>
-                            Action
-                            <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
-                            </svg>
-                        </button>
-                        {/* Dropdown menu */}
-                        <div id="dropdownAction" className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-                            <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownActionButton">
-                                <li>
-                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Reward</a>
-                                </li>
-                                <li>
-                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Promote</a>
-                                </li>
-                                <li>
-                                    <a href="#" className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Activate account</a>
-                                </li>
-                            </ul>
-                            <div className="py-1">
-                                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete User</a>
-                            </div>
-                        </div>
-                    </div>
+                <div className="flex">
+    <div className="bg-green-600 rounded-l-lg border-r-2 border-dotted text-white py-3 pl-6 pr-10" style={{ clipPath: 'polygon(0 0, 100% 0%, 86% 100%, 0% 100%)', marginRight: '-10px' }}>
+        <h3 className="font-bold text-3xl">Select Student</h3>
+    </div>
+    <div className="bg-gray-400 rounded-r-lg py-3 pl-8 pr-6" style={{ clipPath: 'polygon(17% 0, 100% 0, 100% 100%, 0% 100%)', marginLeft: '-24px' }}>
+        <h3 className="font-bold text-gray-700 text-3xl">Add Details</h3>
+    </div>
+</div>
+
                     <label htmlFor="table-search" className="sr-only">Search</label>
                     <div className="relative">
                         <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
