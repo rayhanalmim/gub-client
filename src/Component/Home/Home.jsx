@@ -66,7 +66,7 @@ const Home = () => {
                 <div >
                     <NavBar></NavBar>
                 </div>
-                <div className="w-full lg:w-3/4 pt-5 lg:pt-[220px] rounded-tl-lg top-10">
+                <div className="w-full min-h-screen lg:w-3/4 pt-5 lg:pt-[220px] rounded-tl-lg top-10">
                     <div className="w-full justify-around lg:p-8 gap-9 text-center lg:-mt-32  ">
                         <Outlet />
                     </div>
