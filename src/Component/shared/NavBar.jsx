@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom'; // Import useLocation from
 
 const NavBar = () => {
   const [navbarColor, setNavbarColor] = useState('bg-green-800');
-  const [navbarTextColor, setNavbarTextColor] = useState('');
+  const [navbarTextColor, setNavbarTextColor] = useState('text-white');
   const [navbarShadow, setNavbarShadow] = useState('');
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const drawerRef = useRef(null);
