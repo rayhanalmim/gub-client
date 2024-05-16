@@ -65,6 +65,7 @@ const SignIn = () => {
                 title: "Success...",
                 text: "Sign in success",
             });
+            navigate('/');
             console.log(res.data);
         }
 

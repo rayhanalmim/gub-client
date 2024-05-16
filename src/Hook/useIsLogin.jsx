@@ -8,6 +8,7 @@ const useIsLogin = () => {
         queryKey: ["isLogin"], 
         queryFn: async () => {
             const res = await axiosPublic.get(`/checkLoginStatus`);
+            console.log(res);
             return res.data;
         }
     });

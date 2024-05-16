@@ -17,8 +17,8 @@ const AdminRoute = ({ children }) => {
         return <h2>wait...</h2>
     }
 
-    console.log(loginStatus);
-    if (loginStatus == true) {
+    console.log(loginStatus[0]?.isLogin);
+    if (loginStatus[0]?.isLogin == true) {
         return children;
     }
 

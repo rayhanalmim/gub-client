@@ -3,8 +3,11 @@ import { FaTimes } from 'react-icons/fa';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
 import { Link, useLocation } from 'react-router-dom'; // Import useLocation from react-router-dom
 import useIsLogin from '../../Hook/useIsLogin';
+import useAxiosPublic from '../../Hook/useAxiosPublic';
+import Swal from 'sweetalert2';
 
 const NavBar = () => {
+  const axiosPublic = useAxiosPublic();
   const [navbarColor, setNavbarColor] = useState('bg-green-800');
   const [navbarTextColor, setNavbarTextColor] = useState('text-white');
   const [navbarShadow, setNavbarShadow] = useState('');
@@ -46,7 +49,18 @@ const NavBar = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  // const handleLogOut = 
+  const handleLogOut = async() => {
+    const res = await axiosPublic.get('/getLogOut');
+    if(res.data){
+      Swal.fire({
+        icon: "success",
+        title: "Success...",
+        text: "Sign Out successfully",
+    });
+    refetch();
+    }
+
+  }
 
   return (
     <div className='flex justify-between'>
