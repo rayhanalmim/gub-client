@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./Root";
 import Table from "../Component/OtherComponent/Table";
+import SignIn from "../Component/Authentication/SignIn/SignIn";
 
 const Router = createBrowserRouter([
     {
@@ -23,8 +24,13 @@ const Router = createBrowserRouter([
                 path: '/attendance',
                 element: <h3>hwllo</h3>
             },
+           
         ]
-    }
+    },
+    {
+        path: '/signIn',
+        element: <SignIn></SignIn>
+    },
 ])
 
 export default Router;
