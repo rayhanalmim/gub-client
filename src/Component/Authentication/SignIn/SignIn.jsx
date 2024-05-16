@@ -31,6 +31,23 @@ const SignIn = () => {
         const email = form.get("email");
         const password = form.get("password");
 
+        console.log(email, password);
+
+        if(!email){
+                Swal.fire({
+                    icon: "error",
+                    title: "Please Enter Your Email",
+                    text: "Invalid Email",
+                });
+        }
+        if(!password){
+                Swal.fire({
+                    icon: "error",
+                    title: "Please Enter Your Password",
+                    text: "Invalid Password",
+                });
+        }
+
     };
 
     return (
