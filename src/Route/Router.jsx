@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from "./Root";
 import Table from "../Component/OtherComponent/Table";
 import SignIn from "../Component/Authentication/SignIn/SignIn";
+import AdminRoute from "../Component/PrivateRoute/AdminRoute";
 
 const Router = createBrowserRouter([
     {
@@ -18,7 +19,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/launch',
-                element: <Table></Table>
+                element: <AdminRoute><Table></Table></AdminRoute>
             },
             {
                 path: '/attendance',
