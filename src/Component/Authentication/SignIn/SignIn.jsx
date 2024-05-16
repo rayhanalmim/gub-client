@@ -24,7 +24,7 @@ const SignIn = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const handleLogin = (e) => {
+    const handleLogin = async(e) => {
         e.preventDefault();
 
         const form = new FormData(e.currentTarget);
@@ -49,17 +49,23 @@ const SignIn = () => {
             });
             return null;
         }
-        const res = axiosPublic.post(`/getAccess?email=${email}&password=${password}`);
-        console.log(res);
-        if(res.status === '404'){
+        const res = await axiosPublic.post(`/getAccess?email=${email}&password=${password}`);
+        console.log("error is : ", res.data);
+        if(res.status === 201){
             Swal.fire({
                 icon: "error",
                 title: "login unsuccessful ",
                 text: "invalid credentials",
             });
         }
-        if(res.status === '200'){
-            // const res = axiosPublic.post?
+        if(res.status === 200){
+            const res = await axiosPublic.post('/getLogin');
+            Swal.fire({
+                icon: "success",
+                title: "Success...",
+                text: "Sign in success",
+            });
+            console.log(res.data);
         }
 
     };
