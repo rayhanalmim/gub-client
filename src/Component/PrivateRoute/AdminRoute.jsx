@@ -2,6 +2,7 @@ import { useState } from "react";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import { Navigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import useIsLogin from "../../Hook/useIsLogin";
 
 
 const AdminRoute = ({ children }) => {
@@ -9,22 +10,15 @@ const AdminRoute = ({ children }) => {
     const axiosPublic = useAxiosPublic();
 
 
-    const { data, isLoading } = useQuery({
-        queryKey: ["user"],
-        queryFn: async () => {
-            const res = await axiosPublic.get('/checkLoginStatus');
-            console.log(res);
-            return res.data;
-        },
-    });
+    const { loginStatus, isLoading, refetch } = useIsLogin();
     
 
     if(isLoading){
         return <h2>wait...</h2>
     }
 
-    console.log(data);
-    if (data == true) {
+    console.log(loginStatus);
+    if (loginStatus == true) {
         return children;
     }
 

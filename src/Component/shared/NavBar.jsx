@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { FaTimes } from 'react-icons/fa';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
 import { Link, useLocation } from 'react-router-dom'; // Import useLocation from react-router-dom
+import useIsLogin from '../../Hook/useIsLogin';
 
 const NavBar = () => {
   const [navbarColor, setNavbarColor] = useState('bg-green-800');
@@ -10,6 +11,8 @@ const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const drawerRef = useRef(null);
   const location = useLocation(); // Get the current location using useLocation
+
+  const { loginStatus, isLoading, refetch } = useIsLogin();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,6 +45,8 @@ const NavBar = () => {
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
+
+  // const handleLogOut = 
 
   return (
     <div className='flex justify-between'>
@@ -101,28 +106,19 @@ const NavBar = () => {
 
           </div>
         </div>
-        {/* <div className="">
-          <div className="hidden md:block">
-            {
-                        user && <a className="btn btn-ghost normal-case text-xl">{user.displayName}</a>
-                    }
-
-            <a className="btn btn-ghost normal-case text-xl">Rayhan Al Mim</a>
-
+        <div className="">
+          <div className="">
+            <h3 className={`btn btn-ghost normal-case text-xl font-bold ${navbarTextColor}`}>Rayhan Al Mim</h3>
           </div>
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar mr-2">
             <div className="w-10 rounded-full">
-              <img src="https://i.ibb.co/v1FKW31/user.png" alt="" />
-              {
-                    user ? <img src={user.photoURL} alt="" /> : <img src="https://i.ibb.co/v1FKW31/user.png" alt="" />
-                  }
+              <img src="https://i.ibb.co/9ySqp9L/119398683.jpg" alt="" />
             </div>
           </label>
-          {
-                user ? <Link onClick={handleLogOut} className={`btn w-28 btn-outline btn-sm ${isDarkMode ? 'text-white' : ''}`}>Logout</Link> : <Link to='/login' className={`btn w-28 btn-outline btn-sm ${isDarkMode ? 'text-white' : ''}`}>Login</Link>
-              }
-          <Link to='/login' className={`btn w-28 btn-outline btn-sm }`}>Login</Link>
-        </div> */}
+          <div>
+            <Link to='/signIn' onClick={handleLogOut} className={`btn w-28 btn-outline ${navbarTextColor} btn-sm }`}>Log Out</Link>
+          </div>
+        </div>
       </div>
 
 
