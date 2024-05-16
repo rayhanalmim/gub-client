@@ -33,20 +33,24 @@ const SignIn = () => {
 
         console.log(email, password);
 
-        if(!email){
-                Swal.fire({
-                    icon: "error",
-                    title: "Please Enter Your Email",
-                    text: "Invalid Email",
-                });
+        if (!email) {
+            Swal.fire({
+                icon: "error",
+                title: "Please Enter Your Email",
+                text: "Invalid Email",
+            });
+            return null;
         }
-        if(!password){
-                Swal.fire({
-                    icon: "error",
-                    title: "Please Enter Your Password",
-                    text: "Invalid Password",
-                });
+        if (!password) {
+            Swal.fire({
+                icon: "error",
+                title: "Please Enter Your Password",
+                text: "Invalid Password",
+            });
+            return null;
         }
+        const res = axiosPublic.post(`/getAccess?email=${email}&password=${password}`);
+        console.log(res);
 
     };
 
