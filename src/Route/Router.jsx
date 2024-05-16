@@ -11,11 +11,11 @@ const Router = createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <h3>hwllo</h3>
+                element: <AdminRoute><h3>hwllo</h3></AdminRoute>
             },
             {
                 path: '/coursedetails',
-                element: <h3>hwllo</h3>
+                element: <AdminRoute><h3>hwllo</h3></AdminRoute>
             },
             {
                 path: '/launch',
@@ -23,7 +23,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: '/attendance',
-                element: <h3>hwllo</h3>
+                element: <AdminRoute><h3>hwllo</h3></AdminRoute>
             },
            
         ]
