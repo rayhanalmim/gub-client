@@ -51,6 +51,16 @@ const SignIn = () => {
         }
         const res = axiosPublic.post(`/getAccess?email=${email}&password=${password}`);
         console.log(res);
+        if(res.status === '404'){
+            Swal.fire({
+                icon: "error",
+                title: "login unsuccessful ",
+                text: "invalid credentials",
+            });
+        }
+        if(res.status === '200'){
+            // const res = axiosPublic.post?
+        }
 
     };
 
