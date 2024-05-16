@@ -35,12 +35,12 @@ const SignIn = () => {
 
     return (
         <div
-            className="py-8 px-4 min-h-screen bg-sky-900"
+            className="py-8 px-4 min-h-screen w-full bg-[url('https://i.ibb.co/M8X9LN5/iconic-photo-of-green-university-dp-20210309132337.jpg')] bg-cover bg-center h-3/4 md:h-full  inset-0 bg-black bg-opacity-55 bg-blend-multiply"
         >
-            <div className=" bg-sky-800  w-full  mx-auto max-w-md p-8 pb-16 space-y-3 rounded-xl border my-5  ">
+            <div className=" hero-overlay bg-opacity-60 mt-12 w-full  mx-auto max-w-md p-8 pb-16 space-y-3 rounded-xl border my-5  ">
                 <Link to="/">
                     <div className="w-32 mx-auto block rounded-full  ">
-                        <img src="https://i.ibb.co/SKQbk36/Black-And-White-Modern-Vintage-Retro-Brand-Logo-7-removebg-preview.png" />
+                        <img src="https://i.ibb.co/xMbQDNh/Green-University-of-Bangladesh-logo-svg.png" />
                     </div>
                 </Link>
 
@@ -65,7 +65,7 @@ const SignIn = () => {
                             className="w-full px-4 py-3 rounded-md border dark:border-gray-700 dark:bg-gray-900   focus:dark:border-violet-400"
                         />
                     </div>
-                    <button className="block w-full p-3 text-center rounded-xl dark:text-gray-900 dark:bg-violet-400 btn btn-primary">
+                    <button className="block w-full p-3 text-center rounded-xl dark:text-gray-900 dark:bg-violet-400 btn btn-primary text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium  text-sm px-5 py-2.5  me-2 mb-2">
                         Sign In
                     </button>
                 </form>
