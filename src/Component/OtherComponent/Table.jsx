@@ -34,11 +34,11 @@ const Table = () => {
             <div className="relative overflow-x-auto shadow-md sm:rounded-lg bg-slate-100">
                 <div className="flex items-center p-6 justify-between flex-column  flex-wrap md:flex-row space-y-4 md:space-y-0 pb-4 dark:bg-gray-900">
                     <div className="flex">
-                        <div className="bg-green-600 rounded-l-lg border-r-2 border-dotted text-white py-3 pl-6 pr-10" style={{ clipPath: 'polygon(0 0, 100% 0%, 86% 100%, 0% 100%)', marginRight: '-10px' }}>
-                            <h3 className="font-bold text-3xl">Select Student</h3>
+                        <div className="bg-green-600 rounded-l-lg   text-white py-3 pl-6 pr-10" style={{ clipPath: 'polygon(0 0, 100% 0%, 81% 100%, 0% 100%)', marginRight: '-10px' }}>
+                            <h3 className="font-bold text-3xl">Add Details</h3>
                         </div>
-                        <div className="bg-gray-400 rounded-r-lg py-3 pl-8 pr-6" style={{ clipPath: 'polygon(17% 0, 100% 0, 100% 100%, 0% 100%)', marginLeft: '-24px' }}>
-                            <h3 className="font-bold text-gray-700 text-3xl">Add Details</h3>
+                        <div className="bg-gray-400 rounded-r-lg py-3 pl-8 pr-6" style={{ clipPath: 'polygon(17% 0, 100% 0, 100% 100%, 0% 100%)', marginLeft: '-30px' }}>
+                            <h3 className="font-bold text-gray-700 text-3xl">Select Student</h3>
                         </div>
                     </div>
 
