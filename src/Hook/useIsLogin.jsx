@@ -4,7 +4,7 @@ import useAxiosPublic from "./useAxiosPublic";
 const useIsLogin = () => {
     const axiosPublic = useAxiosPublic();
 
-    const { data: loginStatus = [], isLoading, refetch } = useQuery({
+    const { data: loginStatus = [], isLoading, isPending, refetch } = useQuery({
         queryKey: ["isLogin"], 
         queryFn: async () => {
             const res = await axiosPublic.get(`/checkLoginStatus`);
@@ -13,7 +13,7 @@ const useIsLogin = () => {
         }
     });
 
-    return { loginStatus, isLoading, refetch };
+    return { loginStatus, isLoading, isPending, refetch };
 };
 
 export default useIsLogin;

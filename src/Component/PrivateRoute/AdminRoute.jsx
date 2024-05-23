@@ -10,10 +10,13 @@ const AdminRoute = ({ children }) => {
     const axiosPublic = useAxiosPublic();
 
 
-    const { loginStatus, isLoading, refetch } = useIsLogin();
+    const { loginStatus, isLoading, refetch, isPending } = useIsLogin();
     
 
     if(isLoading){
+        return <h2>wait...</h2>
+    }
+    if(isPending){
         return <h2>wait...</h2>
     }
 

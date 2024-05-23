@@ -2,6 +2,7 @@ import Swal from "sweetalert2";
 import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../../Hook/useAxiosPublic";
+import useIsLogin from "../../../Hook/useIsLogin";
 
 const showSuccessAlert = () => {
     Swal.fire({
@@ -23,6 +24,8 @@ const SignIn = () => {
     const axiosPublic = useAxiosPublic();
     const location = useLocation();
     const navigate = useNavigate();
+
+    const { loginStatus, isLoading, refetch } = useIsLogin();
 
     const handleLogin = async(e) => {
         e.preventDefault();
@@ -58,16 +61,23 @@ const SignIn = () => {
                 text: "invalid credentials",
             });
         }
-        if(res.status === 200){
+        if (res.status === 200) {
             const res = await axiosPublic.post('/getLogin');
             Swal.fire({
                 icon: "success",
                 title: "Success...",
                 text: "Sign in success",
             });
-            navigate('/');
-            console.log(res.data);
+            refetch();
+            console.log(loginStatus);
+        
+            // Introduce a 1-second delay before navigating
+            setTimeout(() => {
+                navigate(location?.state ? location.state : '/');
+                console.log(res.data);
+            }, 1000); // 1000 milliseconds = 1 second
         }
+        
 
     };
 
