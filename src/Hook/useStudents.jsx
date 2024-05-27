@@ -13,7 +13,7 @@ const useStudents = () => {
     queryFn: async () => {
       const res = await axiosPublic.get(`/getStudents`);
       console.log(res);
-      return res.data;
+      return res.data.data;
     },
   });
 
