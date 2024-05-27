@@ -27,19 +27,9 @@ const NavBar = () => {
 
   console.log(currentRouteId);
 
-  // Find the course corresponding to the current route id
   const currentCourse = findCourseById(currentRouteId);
 
-  // If a course is found, you can access its details
-  if (currentCourse) {
-    // Your logic when the current route matches a course _id
-    console.log("Current Course:", currentCourse);
-  } else {
-    // Your logic when the current route doesn't match any course _id
-    console.log("No matching course found.");
-  }
-
-  const { loginStatus, isLoading, refetch } = useIsLogin();
+  const { refetch } = useIsLogin();
 
   useEffect(() => {
     const handleScroll = () => {

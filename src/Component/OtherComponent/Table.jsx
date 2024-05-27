@@ -390,26 +390,28 @@ const Table = () => {
           </div>
         )}
 
-        <div className="flex justify-end py-5 pr-5">
-          {showTable && (
-            <button
-              type="button"
-              className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-              onClick={handleback}
-            >
-              back
-            </button>
-          )}
-          {showTable && (
-            <button
-              type="button"
-              className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-5 me-2 mb-2"
-              onClick={handleFinish}
-            >
-              Finish
-            </button>
-          )}
-        </div>
+        {showTable && (
+          <div className="flex justify-end py-5 pr-5">
+            {showTable && (
+              <button
+                type="button"
+                className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                onClick={handleback}
+              >
+                back
+              </button>
+            )}
+            {showTable && (
+              <button
+                type="button"
+                className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-5 me-2 mb-2"
+                onClick={handleFinish}
+              >
+                Finish
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

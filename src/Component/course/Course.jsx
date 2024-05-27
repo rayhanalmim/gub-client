@@ -25,7 +25,7 @@ const Course = () => {
               <span className="text-white font-semibold tracking-wider">
                 Section:
               </span>
-              {cour?.section}
+              <span className="text-base"> {cour?.section}</span>
             </h3>
             <div className="flex items-center">
               <Link to={`/details/${cour?._id}`}>

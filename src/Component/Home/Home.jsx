@@ -7,6 +7,16 @@ import useCourse from "../../Hook/useCourse";
 
 const Home = () => {
   const location = useLocation(); // Get the current location using useLocation
+  const { course } = useCourse();
+
+  const findCourseById = (id) => {
+    return course.find((cours) => cours._id === id);
+  };
+
+  const currentRouteId = location.pathname.split("/")[2]; // Assuming route is like "details/:id"
+  console.log(location.pathname);
+
+  const currentCourse = findCourseById(currentRouteId);
 
   //   {`/details/:${cour?._id}
 
@@ -78,12 +88,23 @@ const Home = () => {
                   </button>
                 </NavLink>
               ) : (
-                <NavLink to="/coursedetails" activeClassName="active">
-                  <button className="btn bg-emerald-800 hover:text-black hover:bg-teal-300 text-white w-full">
-                    <FaBookReader className="mr-2 text-xl" />
-                    Existing Course
-                  </button>
-                </NavLink>
+                <div>
+                  {currentCourse ? (
+                    <NavLink to="/coursedetails" activeClassName="active">
+                      <button className="btn bg-teal-300 hover:text-black hover:bg-teal-300 text-black w-full">
+                        <FaBookReader className="mr-2 text-xl" />
+                        Existing Course
+                      </button>
+                    </NavLink>
+                  ) : (
+                    <NavLink to="/coursedetails" activeClassName="active">
+                      <button className="btn bg-emerald-800 hover:text-black hover:bg-teal-300 text-white w-full">
+                        <FaBookReader className="mr-2 text-xl" />
+                        Existing Course
+                      </button>
+                    </NavLink>
+                  )}
+                </div>
               )}
 
               {location.pathname === "/attendance" ? (
