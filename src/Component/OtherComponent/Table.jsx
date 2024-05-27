@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import useStudents from "../../Hook/useStudents";
+import Swal from "sweetalert2";
 
 const Table = () => {
   const { students, isLoading, refetch } = useStudents();
@@ -7,6 +8,23 @@ const Table = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [showTable, setShowTable] = useState(false); // State to track view
   const [searchQuery, setSearchQuery] = useState(""); // State to track the search query
+
+  const [formValues, setFormValues] = useState({
+    courseName: "",
+    courseCode: "",
+    section: "",
+    totalClass: "",
+  });
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    console.log(formValues);
+    const { id, value } = e.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [id]: value,
+    }));
+  };
 
   // Update selectAll state based on selectedItems array
   useEffect(() => {
@@ -33,8 +51,15 @@ const Table = () => {
   };
 
   // Function to handle the Next button click
-  const handleNextClick = () => {
-    setShowTable(true);
+  const handleNextClick = (event) => {
+    event.preventDefault();
+    const form = event.target.closest("form");
+
+    if (form.checkValidity()) {
+      setShowTable(true);
+    } else {
+      form.reportValidity();
+    }
   };
 
   const handleback = () => {
@@ -51,6 +76,29 @@ const Table = () => {
         student.studentId.toLowerCase().includes(searchQuery.toLowerCase())
       )
     : [];
+
+  const handleFinish = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Do you want to create section with the given informations!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, create it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "success!",
+          text: "section created successfully!",
+          icon: "success",
+        });
+        console.log(formValues);
+      }
+    });
+  };
+
+  console.log(selectedItems);
 
   return (
     <div className="">
@@ -226,14 +274,16 @@ const Table = () => {
               <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
                   <label
-                    htmlFor="first_name"
+                    htmlFor="courseName"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Course Name
                   </label>
                   <input
                     type="text"
-                    id="first_name"
+                    id="courseName"
+                    value={formValues.courseName}
+                    onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Enter the course name"
                     required
@@ -241,14 +291,16 @@ const Table = () => {
                 </div>
                 <div>
                   <label
-                    htmlFor="last_name"
+                    htmlFor="courseCode"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Course code
+                    Course Code
                   </label>
                   <input
                     type="text"
-                    id="last_name"
+                    id="courseCode"
+                    value={formValues.courseCode}
+                    onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Enter class code"
                     required
@@ -256,46 +308,50 @@ const Table = () => {
                 </div>
                 <div>
                   <label
-                    htmlFor="company"
+                    htmlFor="section"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Select sections
+                    Select Section
                   </label>
-                  <input
-                    type="text"
-                    id="company"
+                  <select
+                    id="section"
+                    value={formValues.section}
+                    onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Enter course sections"
                     required
-                  />
+                  >
+                    <option value="">Select a section</option>
+                    <option value="222EA">222EA</option>
+                    <option value="222EB">222EB</option>
+                  </select>
                 </div>
                 <div>
                   <label
-                    htmlFor="phone"
+                    htmlFor="totalClass"
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    Total class
+                    Total Class
                   </label>
                   <input
-                    type="tel"
-                    id="phone"
+                    type="number"
+                    id="totalClass"
+                    value={formValues.totalClass}
+                    onChange={handleChange}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Enter the total number of class"
+                    placeholder="Enter the total number of classes"
                     required
                   />
                 </div>
               </div>
-              {!showTable && (
-                <div className="flex justify-end">
-                  <button
-                    type="button"
-                    className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                    onClick={handleNextClick}
-                  >
-                    Next
-                  </button>
-                </div>
-              )}
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mb-2"
+                  onClick={handleNextClick}
+                >
+                  Next
+                </button>
+              </div>
             </form>
           </div>
         )}
@@ -304,7 +360,7 @@ const Table = () => {
           {showTable && (
             <button
               type="button"
-              className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-5 me-2 mb-2"
+              className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
               onClick={handleback}
             >
               back
@@ -314,7 +370,7 @@ const Table = () => {
             <button
               type="button"
               className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-5 me-2 mb-2"
-              //   onClick={handleNextClick}
+              onClick={handleFinish}
             >
               Finish
             </button>
