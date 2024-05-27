@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom"; // Import useLocation from
 import useIsLogin from "../../Hook/useIsLogin";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
 import Swal from "sweetalert2";
+import useCourse from "../../Hook/useCourse";
 
 const NavBar = () => {
   const axiosPublic = useAxiosPublic();
@@ -14,6 +15,29 @@ const NavBar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const drawerRef = useRef(null);
   const location = useLocation(); // Get the current location using useLocation
+
+  const { course } = useCourse();
+
+  const findCourseById = (id) => {
+    return course.find((cours) => cours._id === id);
+  };
+
+  const currentRouteId = location.pathname.split("/")[2]; // Assuming route is like "details/:id"
+  console.log(location.pathname);
+
+  console.log(currentRouteId);
+
+  // Find the course corresponding to the current route id
+  const currentCourse = findCourseById(currentRouteId);
+
+  // If a course is found, you can access its details
+  if (currentCourse) {
+    // Your logic when the current route matches a course _id
+    console.log("Current Course:", currentCourse);
+  } else {
+    // Your logic when the current route doesn't match any course _id
+    console.log("No matching course found.");
+  }
 
   const { loginStatus, isLoading, refetch } = useIsLogin();
 
@@ -64,7 +88,11 @@ const NavBar = () => {
   return (
     <div className="">
       <div
-        className={` navbar fixed flex md:gap-10 lg:gap-[280px] xl:gap-[400px] 2xl:gap-[550px] py-5 ${navbarColor}  bg-opacity-75 px-1 md:px-10 z-20 transition-colors duration-300 ${navbarShadow}`}
+        className={` navbar fixed flex md:gap-10 ${
+          currentCourse
+            ? "md:gap-5 lg:gap-[150px] xl:gap-[250px] 2xl:gap-[400px]"
+            : "md:gap-10 lg:gap-[280px] xl:gap-[400px] 2xl:gap-[550px]"
+        } py-5 ${navbarColor}  bg-opacity-75 px-1 md:px-10 z-20 transition-colors duration-300 ${navbarShadow}`}
       >
         <div className={` ${navbarTextColor}`}>
           {/* Drawer for mobile view */}
@@ -90,6 +118,9 @@ const NavBar = () => {
               {location.pathname === "/coursedetails" && (
                 <h3>Pages / Course Details </h3>
               )}
+              {currentCourse && (
+                <h3>Pages / Course Details / Current Course Details </h3>
+              )}
               {location.pathname === "/attendance" && (
                 <h3>Pages / Attendance Portal </h3>
               )}
@@ -114,6 +145,11 @@ const NavBar = () => {
               {location.pathname === "/attendance" && (
                 <h3 className="text-2xl tracking-wide  font-bold">
                   Attendance Portal
+                </h3>
+              )}
+              {currentCourse && (
+                <h3 className="text-2xl tracking-wide  font-bold">
+                  Course details
                 </h3>
               )}
             </div>

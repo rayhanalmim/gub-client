@@ -28,7 +28,7 @@ const Course = () => {
               {cour?.section}
             </h3>
             <div className="flex items-center">
-              <Link to={`/details/`}>
+              <Link to={`/details/${cour?._id}`}>
                 <button
                   href="#"
                   className="inline-flex items-center font-medium text-blue-600 hover:text-sky-600 dark:text-blue-500 dark:hover:text-blue-700"

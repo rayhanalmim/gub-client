@@ -42,6 +42,14 @@ const Router = createBrowserRouter([
           </AdminRoute>
         ),
       },
+      {
+        path: "/details/:id",
+        element: (
+          <AdminRoute>
+            <h3>hwllo</h3>
+          </AdminRoute>
+        ),
+      },
     ],
   },
   {

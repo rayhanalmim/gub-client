@@ -3,9 +3,12 @@ import { FaBookReader, FaHome } from "react-icons/fa";
 import { MdOutlineNotStarted } from "react-icons/md";
 import { AiOutlineEdit } from "react-icons/ai";
 import NavBar from "../shared/NavBar";
+import useCourse from "../../Hook/useCourse";
 
 const Home = () => {
   const location = useLocation(); // Get the current location using useLocation
+
+  //   {`/details/:${cour?._id}
 
   return (
     <div className=" ">
