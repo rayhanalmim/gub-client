@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import useStudents from "../../Hook/useStudents";
 import Swal from "sweetalert2";
+import axios from "axios";
+import useAxiosPublic from "../../Hook/useAxiosPublic";
 
 const Table = () => {
+  const axiosPublic = useAxiosPublic();
   const { students, isLoading, refetch } = useStudents();
   const [selectAll, setSelectAll] = useState(false);
   const [selectedItems, setSelectedItems] = useState([]);
@@ -86,14 +89,42 @@ const Table = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, create it!",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "success!",
-          text: "section created successfully!",
-          icon: "success",
-        });
+        formValues.enrolled_student = selectedItems;
         console.log(formValues);
+        if (!selectedItems.length) {
+          return Swal.fire({
+            title: "something want wrong!",
+            text: "Please select student",
+            icon: "error",
+          });
+        }
+        try {
+          const result = await axiosPublic.post("/createCourse", formValues);
+          if (result.status == 200) {
+            Swal.fire({
+              title: "success!",
+              text: "section created successfully!",
+              icon: "success",
+            });
+            setShowTable(false);
+
+            setSelectedItems([]);
+            setFormValues({
+              courseName: "",
+              courseCode: "",
+              section: "",
+              totalClass: "",
+            });
+          }
+        } catch (error) {
+          Swal.fire({
+            title: "something want wrong!",
+            text: error,
+            icon: "error",
+          });
+        }
       }
     });
   };
