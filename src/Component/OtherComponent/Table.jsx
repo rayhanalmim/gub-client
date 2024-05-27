@@ -3,6 +3,7 @@ import useStudents from "../../Hook/useStudents";
 import Swal from "sweetalert2";
 import axios from "axios";
 import useAxiosPublic from "../../Hook/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 const Table = () => {
   const axiosPublic = useAxiosPublic();
@@ -11,6 +12,7 @@ const Table = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [showTable, setShowTable] = useState(false); // State to track view
   const [searchQuery, setSearchQuery] = useState(""); // State to track the search query
+  const navigate = useNavigate();
 
   const [formValues, setFormValues] = useState({
     courseName: "",
@@ -117,6 +119,7 @@ const Table = () => {
               section: "",
               totalClass: "",
             });
+            navigate("/coursedetails");
           }
         } catch (error) {
           Swal.fire({
