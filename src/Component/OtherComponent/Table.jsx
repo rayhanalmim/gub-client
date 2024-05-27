@@ -37,6 +37,10 @@ const Table = () => {
     setShowTable(true);
   };
 
+  const handleback = () => {
+    setShowTable(false);
+  };
+
   // Function to handle the search input change
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -80,36 +84,40 @@ const Table = () => {
               <h3 className="font-bold text-3xl">Select Student</h3>
             </div>
           </div>
-          <label htmlFor="table-search" className="sr-only">
-            Search
-          </label>
-          <div className="relative">
-            <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-              <svg
-                className="w-4 h-4 text-gray-500 dark:text-gray-400"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+          {showTable && (
+            <div>
+              <label htmlFor="table-search" className="sr-only">
+                Search
+              </label>
+              <div className="relative">
+                <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg
+                    className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 20 20"
+                  >
+                    <path
+                      stroke="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                    />
+                  </svg>
+                </div>
+                <input
+                  type="text"
+                  id="table-search-users"
+                  className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder="Search by student ID"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
                 />
-              </svg>
+              </div>
             </div>
-            <input
-              type="text"
-              id="table-search-users"
-              className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              placeholder="Search by student ID"
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
-          </div>
+          )}
         </div>
 
         {/* Conditionally render the content based on showTable state */}
@@ -177,7 +185,7 @@ const Table = () => {
                     >
                       <img
                         className="w-10 h-10 rounded-full"
-                        src="/docs/images/people/profile-picture-1.jpg"
+                        src="https://res.cloudinary.com/deqkxg249/image/upload/v1716707290/fp3d3tlwatmuvebfesiv.png"
                         alt="Jese image"
                       />
                       <div className="ps-3">
@@ -214,18 +222,92 @@ const Table = () => {
             {" "}
             {/* This div is displayed by default */}
             {/* Content for the Add Details section */}
-            <p>Please click "Next" to view student data.</p>
+            <form>
+              <div className="grid gap-6 mb-6 md:grid-cols-2">
+                <div>
+                  <label
+                    htmlFor="first_name"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Course Name
+                  </label>
+                  <input
+                    type="text"
+                    id="first_name"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter the course name"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="last_name"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Course code
+                  </label>
+                  <input
+                    type="text"
+                    id="last_name"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter class code"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="company"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Select sections
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter course sections"
+                    required
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="phone"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    Total class
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="Enter the total number of class"
+                    required
+                  />
+                </div>
+              </div>
+              {!showTable && (
+                <div className="flex justify-end">
+                  <button
+                    type="button"
+                    className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                    onClick={handleNextClick}
+                  >
+                    Next
+                  </button>
+                </div>
+              )}
+            </form>
           </div>
         )}
 
         <div className="flex justify-end py-5 pr-5">
-          {!showTable && (
+          {showTable && (
             <button
               type="button"
-              className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-              onClick={handleNextClick}
+              className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-5 me-2 mb-2"
+              onClick={handleback}
             >
-              Next
+              back
             </button>
           )}
           {showTable && (
